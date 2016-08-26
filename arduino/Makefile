@@ -1,0 +1,13 @@
+HAL_PATH = C:/AVR-HAL/HAL
+APP_NAME = EGSE_Arduino
+
+INCLUDES = \
+  -I .
+
+BOARD=ARDUINONANO328P_16MHZ
+
+SRCS = \
+  EGSE.cpp
+
+
+include $(HAL_PATH)/build.make
