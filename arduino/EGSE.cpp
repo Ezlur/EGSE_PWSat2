@@ -11,7 +11,9 @@ int main() {
     pin.reset();
 
     while (true) {
-        pin.toggle();
-        _delay_ms(500);
+         pin.reset();
+		_delay_ms(2500);
+        pin.set();
+		_delay_ms(500);
     }
 }
