@@ -8,9 +8,11 @@ def read_pins():
             if e.errno == 2:
                 print('There is no \"pinout.txt\" file.')
                 write_pins()
+                file = open('pinout.txt', 'r')
             else:
                 print("I/O error({0}): {1}".format(e.errno, e.strerror))
-    return eval(file.read())
+    dictionary = eval(file.read())
+    return dictionary
 
 
 if __name__ == "__main__":
