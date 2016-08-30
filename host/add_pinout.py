@@ -14,6 +14,7 @@ pinout = dict.fromkeys([
 
 pin = 0
 
+
 def is_pin_ok(pin):
     if pin == '0':
         print("That pin doesn't exist!")
@@ -31,7 +32,7 @@ def is_pin_taken(pin):
     return False
 
 
-if __name__ == "__main__":
+def write_pins():
     print("You can manually edit the pinout in \"pinout.txt\".")
     print("Write pin to which each line is connected:")
 
@@ -43,3 +44,7 @@ if __name__ == "__main__":
 
     with open("pinout.txt", 'w') as file:
         file.write(str(pinout))
+
+
+if __name__ == "__main__":
+    write_pins()
