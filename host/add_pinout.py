@@ -5,7 +5,7 @@ pinout = dict.fromkeys([
         'LCL_RadFET+3V3',
         'LCL_CAMs+3V3',
         'LCL_SunS+3V3',
-        'LCL_SENS+5v',
+        'LCL_SENS+5V',
         'LCL_SAILmain',
         'LCL_SAILred',
         'LCL_SADSmain',
@@ -16,11 +16,11 @@ pin = 0
 
 
 def is_pin_ok(pin):
-    if pin == '0':
-        print("That pin doesn't exist!")
+    if pin == '0' or not pin.isdigit():
+        print "That pin doesn't exist!"
         return False
     elif is_pin_taken(pin):
-        print("That pin is already taken!")
+        print "That pin is already taken!"
         return False
     else:
         return True
@@ -33,12 +33,12 @@ def is_pin_taken(pin):
 
 
 def write_pins():
-    print("You can manually edit the pinout in \"pinout.txt\".")
-    print("Write pin to which each line is connected:")
+    print "You can manually edit the pinout in \"pinout.txt\"."
+    print "Write pins to which each line is connected:"
 
     for key in sorted(pinout.keys()):
         while True:
-            pin = input(key + ': ')
+            pin = raw_input(key + ': ')
             if is_pin_ok(pin): break
         pinout[key] = pin
 
@@ -51,11 +51,11 @@ def read_pins():
         file = open('pinout.txt', 'r')
     except IOError as e:
             if e.errno == 2:
-                print('There is no \"pinout.txt\" file.')
+                print 'There is no \"pinout.txt\" file.'
                 write_pins()
                 file = open('pinout.txt', 'r')
             else:
-                print("I/O error({0}): {1}".format(e.errno, e.strerror))
+                print "I/O error({0}): {1}".format(e.errno, e.strerror)
     dictionary = eval(file.read())
     return dictionary
 
